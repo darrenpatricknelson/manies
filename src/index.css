@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@layer base {
+  html { scroll-behavior: smooth; font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; background-color: #0a0909; color: #fefaf6; }
+  body { overflow-x: hidden; }
+}
+
+.font-serif { font-family: 'Cinzel', Georgia, serif; }
+.font-script { font-family: 'Yellowtail', cursive; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0d0c0c; }
+::-webkit-scrollbar-thumb { background: #292524; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #f95721; }
+
+.rotating-border-canvas {
+  background: conic-gradient(from 0deg, #f95721, #f59e0b, #ef4444, #f97316, #f95721);
+  opacity: 0.25;
+  transition: opacity 0.4s ease;
+}
+.group:hover .rotating-border-canvas { opacity: 1; animation: rotate-border-spin 3s linear infinite; }
+@keyframes rotate-border-spin { to { transform: rotate(360deg); } }
