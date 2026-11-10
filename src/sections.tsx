@@ -607,16 +607,16 @@ export function Locations({ onPick }: { onPick: (id: BranchId) => void }) {
 
 const REVIEWS = [
   {
-    name: 'Eat Out South Africa', role: 'Neighbourhood Gems Guide', initials: 'EO', badge: 'Official Food Critic',
-    text: 'Opened during Covid as a from-home pizzeria and quickly became a cult favourite for their signature rolled pizza "The Meg". The portions are massive, the garlic basting is addictive, and the crust has that authentic smoky blister!',
+    name: 'Eat Out South Africa', role: 'Neighbourhood Gems Guide', initials: 'EO', badge: 'Woolworths Guide',
+    text: 'Opened during Covid as a from-home pizzeria and quickly became a cult favourite for their signature rolled pizza "The Meg". The portions are massive, the garlic basting is addictive, and the crust has that authentic smoky blister!', link: 'https://neighbourhoodgems.eatout.co.za/restaurants/manies-wood-fired-pizza/'
   },
   {
-    name: 'Riza & Shamiel', role: 'Cape Town Food Vloggers', initials: 'RS', badge: 'Cape Town Viral Review',
-    text: 'We investigated Cape Town’s mysterious MEG! The seared steak MEG and spicy chicken MEG are ridiculous. Rolled tightly, loaded with cheese, baked in woodfire, glazed with glossy garlic sauce and served in a brown paper bag with nachos. Unbelievable!',
+    name: 'Riza & Shamiel', role: 'Cape Town Food Vloggers', initials: 'RS', badge: 'YouTube Review',
+    text: 'We investigated Cape Town’s mysterious MEG! The seared steak MEG and spicy chicken MEG are ridiculous. Rolled tightly, loaded with cheese, baked in woodfire, glazed with glossy garlic sauce and served in a brown paper bag with nachos. Unbelievable!', link: 'https://www.youtube.com/watch?v=5d3HjdZ4uMs'
   },
   {
-    name: 'Zubair Khan', role: 'Google Verified Local Guide', initials: 'ZK', badge: 'Local Guide 5-Star',
-    text: 'I sit in bed some nights thinking of how good their food is… like a crazy ex! The District 6 chops pizza and the Blueberry Cheesecake milkshake are next level. Truly Cape Town’s best kept secret.',
+    name: 'Restaurant Guru', role: 'International Food Guide', initials: 'RG', badge: 'Read The Comments',
+    text: 'I sit in bed some nights thinking of how good their food is… like a crazy ex! The District 6 chops pizza and the Blueberry Cheesecake milkshake are next level. Truly Cape Town’s best kept secret.', link: 'https://restaurantguru.com/MANIES-PIZZA-Cape-Town'
   },
 ];
 
@@ -635,7 +635,8 @@ export function Reviews() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {REVIEWS.map((r) => (
-            <div key={r.name} className="bg-[#141313] border border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-orange-500/30 transition-all shadow-lg">
+            <a key={r.name} href={r.link} target="_blank" rel="noopener noreferrer" className="block">
+            <div className="bg-[#141313] border border-stone-800 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-orange-500/30 transition-all shadow-lg h-full">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex gap-1 text-amber-400">
@@ -649,11 +650,12 @@ export function Reviews() {
               <div className="flex items-center gap-3 pt-4 border-t border-stone-800/80">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-600 to-amber-500 text-white font-black text-sm flex items-center justify-center">{r.initials}</div>
                 <div>
-                  <div className="font-bold text-sm text-white">{r.name}</div>
+                  <div className="font-bold text-sm text-white">{r.name}</div> 
                   <div className="text-[11px] text-stone-400">{r.role}</div>
                 </div>
               </div>
             </div>
+            </a>
           ))}
         </div>
       </div>
