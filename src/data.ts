@@ -13,8 +13,8 @@ export const BRANCHES: Record<BranchId, BranchInfo> = {
     phone: '27628859986',
     phoneDisplay: '+27 62 885 9986',
     mapsUrl: 'https://maps.google.com/?q=34+Victoria+Rd,+Grassy+Park,+Cape+Town',
-    hoursSunThu: '11:00 AM – 21:00 PM',
-    hoursFriSat: '10:00 AM – 23:00 PM',
+    hoursSunThu: '11:00 AM – 9:00 PM',
+    hoursFriSat: '10:00 AM – 11:00 PM',
     isFlagship: true,
   },
   kb: {
@@ -25,8 +25,8 @@ export const BRANCHES: Record<BranchId, BranchInfo> = {
     phone: '27616202816',
     phoneDisplay: '+27 61 620 2816',
     mapsUrl: 'https://maps.google.com/?q=134+Kromboom+Road,+Crawford,+Cape+Town',
-    hoursSunThu: '12:00 PM – 21:00 PM',
-    hoursFriSat: '12:00 PM – 22:00 PM',
+    hoursSunThu: '12:00 PM – 9:00 PM',
+    hoursFriSat: '12:00 PM – 10:00 PM',
     isFlagship: false,
   },
 };

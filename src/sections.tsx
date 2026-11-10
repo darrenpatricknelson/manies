@@ -184,7 +184,7 @@ export function Hero({ branch }: { branch: BranchInfo }) {
             <div className="absolute -inset-[150%] rotating-border-canvas pointer-events-none" />
             <div className="relative overflow-hidden rounded-[21px] aspect-[4/5] bg-stone-900 border border-stone-800/90">
               <img
-                src="/images/meg_rolled_photo_1794220887370.jpg"
+                src={`${import.meta.env.BASE_URL}images/meg_rolled_photo_1794220887370.jpg`}
                 alt="The Signature MEG"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out cursor-pointer"
               />
@@ -217,7 +217,7 @@ export function Hero({ branch }: { branch: BranchInfo }) {
 
 const STUDIO = {
   pizza: {
-    src: '/images/artisanal_pizza_photo_1794220886428.jpg',
+    src: `${import.meta.env.BASE_URL}images/artisanal_pizza_photo_1794220886428.jpg`,
     remote: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1600&auto=format&fit=crop',
     title: 'Artisanal Woodfired Pizza',
     subtitle: 'District Six Pizza',
@@ -230,7 +230,7 @@ const STUDIO = {
     ] as [number, number, string, string][],
   },
   meg: {
-    src: '/images/meg_rolled_photo_1794220887370.jpg',
+    src: `${import.meta.env.BASE_URL}images/meg_rolled_photo_1794220887370.jpg`,
     remote: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1600&auto=format&fit=crop',
     title: 'The Signature Rolled "MEG"',
     subtitle: 'The MEG • Cape Town Viral Sensation',
@@ -243,7 +243,7 @@ const STUDIO = {
     ] as [number, number, string, string][],
   },
   oven: {
-    src: '/images/woodfire_oven_photo_1794220887783.jpg',
+    src: `${import.meta.env.BASE_URL}images/woodfire_oven_photo_1794220887783.jpg`,
     remote: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?q=80&w=1600&auto=format&fit=crop',
     title: 'The 450°C Hardwood Hearth',
     subtitle: 'Authentic Oak Firebrick Oven • Live Baking Coals',
@@ -779,16 +779,13 @@ export function Footer() {
         <div className="lg:col-span-3 space-y-3">
           <h4 className="font-serif font-bold text-sm uppercase tracking-wider text-white">Trading Hours</h4>
           <div className="space-y-3 text-xs text-stone-400">
-            <div>
-              <div className="text-stone-200 font-bold mb-0.5">Grassy Park:</div>
-              <div>Sun – Thu: 11:00 AM – 21:00 PM</div>
-              <div>Fri – Sat: 10:00 AM – 23:00 PM</div>
-            </div>
-            <div>
-              <div className="text-stone-200 font-bold mb-0.5">Kromboom (Crawford):</div>
-              <div>Sun – Thu: 12:00 PM – 21:00 PM</div>
-              <div>Fri – Sat: 12:00 PM – 22:00 PM</div>
-            </div>
+            {Object.values(BRANCHES).map((b) => (
+              <div key={b.id}>
+                <div className="text-stone-200 font-bold mb-0.5">{b.shortName}:</div>
+                <div>Sun – Thu: {b.hoursSunThu}</div>
+                <div>Fri – Sat: {b.hoursFriSat}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
