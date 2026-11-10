@@ -670,7 +670,7 @@ const POSTS: [string, string][] = [
   ['1565299624946-b28f40a0ae38', 'Crisp blistered crust fresh out of 450°C woodfire'],
   ['1572490122747-3968b75cc699', 'Blueberry Cheesecake double cream shake'],
   ['1588315029754-2dd089d39a1a', 'Baking MEGs and Cape suburb pizzas over hardwood logs'],
-  ['1517433670267-08bbd4be890f', 'Lotus Biscoff loaded dessert sundae'],
+  ['local:images/biscoff_loaded_sundae.jpg', 'Lotus Biscoff loaded dessert sundae'],
   ['1534308983496-4fabb1a015ee', 'Hardwood flame blister and hot garlic herb glaze'],
 ];
 
@@ -692,7 +692,7 @@ export function InstagramSection() {
           {POSTS.map(([id, caption]) => (
             <a key={id} href={IG_URL} target="_blank" rel="noopener noreferrer" className="group relative aspect-square rounded-xl overflow-hidden bg-stone-900 border border-stone-800 block">
               <img
-                src={`https://images.unsplash.com/photo-${id}?q=80&w=600&auto=format&fit=crop`}
+                src={id.startsWith('local:') ? `${import.meta.env.BASE_URL}${id.slice(6)}` : `https://images.unsplash.com/photo-${id}?q=80&w=600&auto=format&fit=crop`}
                 alt={caption}
                 loading="lazy"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

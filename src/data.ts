@@ -196,7 +196,7 @@ export const MENU_ITEMS: MenuItem[] = [
   {
     id: 15, category: 'shakes', name: 'Lotus Biscoff Loaded Sundae', price: 68, tag: 'Dessert',
     desc: 'Warm melted Biscoff spread poured generously over artisan vanilla soft serve with crunchy caramelized Biscoff biscuit crumb.',
-    img: u('1517433670267-08bbd4be890f'),
+    img: `${import.meta.env.BASE_URL}images/biscoff_loaded_sundae.jpg`,
     ingredients: ['Warm Biscoff Spread', 'Artisan Vanilla Soft Serve', 'Caramelized Biscoff Crumb'],
     options: [
       g('Biscoff Spread Level', ['Warm Melted Biscoff Drizzle', 0], ['Double Warm Biscoff Waterfall', 18], ['Extra Biscoff Biscuit Crumb', 12]),
