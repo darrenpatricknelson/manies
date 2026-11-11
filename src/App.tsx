@@ -5,6 +5,7 @@ import { BRANCHES, MENU_ITEMS } from './data';
 import { Navbar, Hero, Spotlight, Story, Locations, Reviews, InstagramSection, Footer } from './sections';
 import { Menu } from './Menu';
 import { Cart } from './Cart';
+import { OrderConfirm } from './OrderConfirm';
 
 // localStorage can throw (private mode, disabled storage); the site should still work without it.
 const store = {
@@ -18,6 +19,7 @@ export default function App() {
   });
   const [branchId, setBranchId] = useState<BranchId>(() => (store.get('manies_branch') as BranchId) || 'gp');
   const [cartOpen, setCartOpen] = useState(false);
+  const [confirmMessage, setConfirmMessage] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
   const toastTimer = useRef<number | undefined>(undefined);
 
@@ -91,7 +93,25 @@ export default function App() {
         onQty={updateQty}
         onRemove={removeItem}
         onClear={() => setCart([])}
+        onSent={(message) => {
+          setCartOpen(false);
+          setConfirmMessage(message);
+        }}
       />
+
+      {confirmMessage !== null && (
+        <OrderConfirm
+          message={confirmMessage}
+          onPlaced={() => {
+            setCart([]);
+            setConfirmMessage(null);
+          }}
+          onReorder={() => {
+            setConfirmMessage(null);
+            setCartOpen(true);
+          }}
+        />
+      )}
 
       {count > 0 && !cartOpen && (
         <div className="fixed bottom-6 right-6 z-40">

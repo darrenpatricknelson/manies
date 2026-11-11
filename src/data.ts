@@ -19,7 +19,7 @@ export const BRANCHES: Record<BranchId, BranchInfo> = {
   },
   kb: {
     id: 'kb',
-    name: 'Kromboom (Crawford / Athlone)',
+    name: 'Kromboom (New location)',
     shortName: 'Kromboom',
     address: 'Shop 8, 134 Kromboom Rd (Cnr Jan Smuts Dr), Crawford, Cape Town',
     phone: '27616202816',

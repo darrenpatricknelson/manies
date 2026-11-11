@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { X, ShoppingBag, Trash2, Plus, Minus, MessageCircle, MapPin, ShieldCheck, Bike, Store } from 'lucide-react';
 import { BranchId, BranchInfo, CartItem, CustomerDetails } from './types';
-import { calculateCartTotal, calculateItemSubtotal, formatRand, generateWhatsAppUrl } from './utils/order';
+import { calculateCartTotal, calculateItemSubtotal, formatRand, generateWhatsAppMessage } from './utils/order';
 
 interface CartProps {
   isOpen: boolean;
@@ -12,6 +12,7 @@ interface CartProps {
   onQty: (cartItemId: string, delta: number) => void;
   onRemove: (cartItemId: string) => void;
   onClear: () => void;
+  onSent: (message: string) => void;
 }
 
 const toggle = (active: boolean) =>
@@ -21,7 +22,7 @@ const toggle = (active: boolean) =>
 const field = 'w-full bg-stone-900 border border-stone-800 rounded-xl px-3.5 py-2 text-xs text-white placeholder:text-stone-500 focus:outline-none focus:border-orange-500';
 const qtyBtn = 'w-6 h-6 rounded-md bg-stone-800 hover:bg-stone-700 text-white flex items-center justify-center text-xs cursor-pointer';
 
-export function Cart({ isOpen, onClose, items, branch, onBranch, onQty, onRemove, onClear }: CartProps) {
+export function Cart({ isOpen, onClose, items, branch, onBranch, onQty, onRemove, onClear, onSent }: CartProps) {
   const [name, setName] = useState('');
   const [type, setType] = useState<'collection' | 'delivery'>('collection');
   const [address, setAddress] = useState('');
@@ -32,7 +33,9 @@ export function Cart({ isOpen, onClose, items, branch, onBranch, onQty, onRemove
     if (items.length === 0) return;
     // Phone and kitchen notes have no input in the UI, so they're always sent empty, as in the original.
     const customer: CustomerDetails = { name, phone: '', type, address, notes: '' };
-    window.open(generateWhatsAppUrl(items, branch, customer), '_blank');
+    const message = generateWhatsAppMessage(items, branch, customer);
+    window.open(`https://wa.me/${branch.phone}?text=${encodeURIComponent(message)}`, '_blank');
+    onSent(message);
   };
 
   return (

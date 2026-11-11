@@ -20,18 +20,18 @@ export function generateWhatsAppMessage(items: CartItem[], branch: BranchInfo, c
   const timeStr = new Date().toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' });
   const line = '--------------------------------\n';
 
-  let msg = `🔥 *NEW ORDER - MANIES WOODFIRE PIZZA*\n📍 *Branch:* ${branch.name}\n🕒 *Time:* ${timeStr}\n${line}`;
+  let msg = `*NEW ORDER - MANIES WOODFIRE PIZZA*\n*Branch:* ${branch.name}\n*Time:* ${timeStr}\n${line}`;
 
   if (customer && customer.name.trim()) {
-    msg += `👤 *Customer:* ${customer.name.trim()}\n`;
-    if (customer.phone.trim()) msg += `📞 *Contact:* ${customer.phone.trim()}\n`;
-    msg += `📦 *Order Type:* ${customer.type === 'delivery' ? '🚗 Delivery' : '🏪 Collection / Pickup'}\n`;
-    if (customer.type === 'delivery' && customer.address?.trim()) msg += `🏠 *Delivery Address:* ${customer.address.trim()}\n`;
-    if (customer.notes?.trim()) msg += `📝 *Kitchen Notes:* ${customer.notes.trim()}\n`;
+    msg += `*Customer:* ${customer.name.trim()}\n`;
+    if (customer.phone.trim()) msg += `*Contact:* ${customer.phone.trim()}\n`;
+    msg += `*Order Type:* ${customer.type === 'delivery' ? 'Delivery' : 'Collection / Pickup'}\n`;
+    if (customer.type === 'delivery' && customer.address?.trim()) msg += `*Delivery Address:* ${customer.address.trim()}\n`;
+    if (customer.notes?.trim()) msg += `*Kitchen Notes:* ${customer.notes.trim()}\n`;
     msg += line;
   }
 
-  msg += `🛒 *ORDER DETAILS:*\n`;
+  msg += `*ORDER DETAILS:*\n`;
   items.forEach((item) => {
     msg += `• *${item.qty}x ${item.name}* — ${formatRand(calculateItemSubtotal(item))}\n`;
     (item.selectedOptions || []).forEach((opt) => {
@@ -41,8 +41,8 @@ export function generateWhatsAppMessage(items: CartItem[], branch: BranchInfo, c
   });
 
   msg += line;
-  msg += `💰 *TOTAL ESTIMATE:* ${formatRand(calculateCartTotal(items))}\n\n`;
-  msg += `✨ *100% Strictly Halaal*\nPlease reply with preparation time and payment/collection details. Shookran!`;
+  msg += `*TOTAL ESTIMATE:* ${formatRand(calculateCartTotal(items))}\n\n`;
+  msg += `*100% Strictly Halaal*\nPlease reply with preparation time and payment/collection details. Shukran!`;
   return msg;
 }
 
